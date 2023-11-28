@@ -1,0 +1,81 @@
+.register{
+    height: 100vh;
+    background-color: rgb(193,190,255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        .card{
+            width: 50%;
+            display: flex;
+            flex-direction: row-reverse;
+            background-color: white;
+            border: radius 10px;
+            min-height: 500px;
+            overflow: hidden;
+    
+            .left{
+                flex: 1;
+                background: url("https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/12/99871876.jpg?auto=format&q=60&w=1280&h=960&fit=crop&crop=faces");
+                background-size: cover;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                color: white;
+                h1{
+                    font-size: 80px;
+                    line-height: 100px;
+                }
+                p{
+                    font-size: 20px;
+                    line-height: 30px;
+                }
+
+                span{
+                    font-size: 14px;
+                }
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    border: none;
+                    background-color: white;
+                    color: rebeccapurple;   
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+    
+            .right{
+                flex: 1;
+                padding: 25px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+    
+                h1{
+                    color: #555;
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+    
+                    input{
+                        border: none;
+                        border-bottom: 1px solid lightgray;
+                        padding: 20px 10px;
+                    }
+                    button{
+                        width: 50%;
+                        padding: 10px;
+                        border: none;
+                        background-color: #938eef;
+                        color : white;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
