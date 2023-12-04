@@ -1,3 +1,8 @@
+body {
+  background-color: #222;
+  color: white; /* Set text color to white for better visibility on a dark background */
+}
+
 $themes: (
   light: (
     textColor: black,

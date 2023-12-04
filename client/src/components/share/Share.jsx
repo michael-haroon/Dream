@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
+import dream from "../../assets/Dream.jpeg";
 const Share = () => {
   const [file, setFile] = useState(null);
   const [desc, setDesc] = useState("");
@@ -51,7 +52,7 @@ const Share = () => {
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={"/upload/" + currentUser.profilePic} alt="" />
+            <img src={dream} alt="" />
             <input
               type="text"
               placeholder={`What's on your mind ${currentUser.name}?`}
@@ -80,14 +81,7 @@ const Share = () => {
                 <span>Add Image</span>
               </div>
             </label>
-            <div className="item">
-              <img src={Map} alt="" />
-              <span>Add Place</span>
-            </div>
-            <div className="item">
-              <img src={Friend} alt="" />
-              <span>Tag Friends</span>
-            </div>
+          
           </div>
           <div className="right">
             <button onClick={handleClick}>Share</button>

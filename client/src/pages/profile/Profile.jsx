@@ -59,8 +59,6 @@ const Profile = () => {
     mutation.mutate(relationshipData.includes(currentUser.id));
   };
 
-  console.log(data);
-
   return (
     <div className="profile">
       {isLoading ? (

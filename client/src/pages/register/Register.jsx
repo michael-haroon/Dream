@@ -35,18 +35,18 @@ const Register = () => {
         <div className = 'register'>
             <div className='card'>
                 <div className = 'left'> 
-                    <h1>Cal Social!</h1>
+                    <h1>Dreamer's Journal</h1>
                     <p> 
-                        Nice to meet you ! <br/>
+                        Nice to meet you  <br/>
                          </p>
-                    <span>Don't you have an account?</span>
+                    <span>Have an account?</span>
                     <Link to = "/login">
                     <button>Login</button>
                     </Link>
                     
                 </div>
                 <div className = 'right'>
-                <h1>Do you have an account?</h1>
+                <h1>Register here!</h1>
                 <form>
             <input
               type="text"
@@ -72,7 +72,7 @@ const Register = () => {
               name="name"
               onChange={handleChange}
             />
-            {err && err}
+            {err && <span style={{ color: 'black' }}>{err}</span>}
             <button onClick={handleClick}>Register</button>
           </form>
             </div>

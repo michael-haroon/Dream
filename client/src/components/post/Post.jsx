@@ -12,6 +12,7 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
+import dream from "../../assets/Dream.jpeg";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -64,7 +65,7 @@ const Post = ({ post }) => {
       <div className="container">
         <div className="user">
           <div className="userInfo">
-            <img src={"/upload/"+post.profilePic} alt="" />
+            <img src={dream} alt="" />
             <div className="details">
               <Link
                 to={`/profile/${post.userId}`}
@@ -85,7 +86,7 @@ const Post = ({ post }) => {
           <img src={"/upload/" + post.img} alt="" />
         </div>
         <div className="info">
-          <div className="item">
+          {/* <div className="item">
             {isLoading ? (
               "loading"
             ) : data.includes(currentUser.id) ? (
@@ -97,15 +98,12 @@ const Post = ({ post }) => {
               <FavoriteBorderOutlinedIcon onClick={handleLike} />
             )}
             {data?.length} Likes
-          </div>
+          </div> */}
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            See Comments
+            See Proceeding Thoughts
           </div>
-          <div className="item">
-            <ShareOutlinedIcon />
-            Share
-          </div>
+          
         </div>
         {commentOpen && <Comments postId={post.id} />}
       </div>

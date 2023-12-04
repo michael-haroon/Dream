@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
-import RightBar from "./components/rightBar/RightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import "./style.scss";
@@ -30,11 +29,9 @@ function App() {
         <div className={`theme-${darkMode ? "dark" : "light"}`}>
           <Navbar />
           <div style={{ display: "flex" }}>
-            <LeftBar />
             <div style={{ flex: 6 }}>
               <Outlet />
             </div>
-            <RightBar />
           </div>
         </div>
       </QueryClientProvider>
@@ -86,3 +83,4 @@ function App() {
 }
 
 export default App;
+
