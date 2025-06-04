@@ -54,8 +54,8 @@ A full-stack social media platform built with modern web technologies.
 
 1. Clone the repository
    ```bash
-   git clone <repository-url>
-   cd dream
+   git clone https://github.com/michael-haroon/Dream.git
+   cd Dream
    ```
 
 2. Set up environment variables
@@ -71,7 +71,7 @@ A full-stack social media platform built with modern web technologies.
    npm install
    
    # Install frontend dependencies
-   cd ../client
+   cd client
    npm install
    ```
 
