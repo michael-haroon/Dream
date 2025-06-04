@@ -45,7 +45,8 @@ Thumbs.db
 /backend/uploads/
 
 # Local development
-.env.local
+.env.*
+env
 
 # Vite specific
 .cache/
