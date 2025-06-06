@@ -51,11 +51,6 @@ const Post = ({ post }) => {
         queryClient.invalidateQueries(["posts"]);
       },
 });
-
-  const handleLike = () => {
-    mutation.mutate(data.includes(currentUser.id));
-  };
-
   const handleDelete = () => {
     deleteMutation.mutate(post.id);
   };
@@ -67,12 +62,7 @@ const Post = ({ post }) => {
           <div className="userInfo">
             <img src={dream} alt="" />
             <div className="details">
-              <Link
-                to={`/profile/${post.userId}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <span className="name">{post.name}</span>
-              </Link>
+              <span className="name">{post.name}</span>
               <span className="date">{moment(post.createdAt).fromNow()}</span>
             </div>
           </div>
@@ -86,19 +76,6 @@ const Post = ({ post }) => {
           <img src={"/upload/" + post.img} alt="" />
         </div>
         <div className="info">
-          {/* <div className="item">
-            {isLoading ? (
-              "loading"
-            ) : data.includes(currentUser.id) ? (
-              <FavoriteOutlinedIcon
-                style={{ color: "red" }}
-                onClick={handleLike}
-              />
-            ) : (
-              <FavoriteBorderOutlinedIcon onClick={handleLike} />
-            )}
-            {data?.length} Likes
-          </div> */}
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
             See Proceeding Thoughts

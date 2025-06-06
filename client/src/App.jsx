@@ -9,7 +9,6 @@ import {
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
 import "./style.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -58,10 +57,6 @@ function App() {
         {
           path: "/",
           element: <Home />,
-        },
-        {
-          path: "/profile/:id",
-          element: <Profile />,
         },
       ],
     },

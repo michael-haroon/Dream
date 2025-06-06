@@ -32,10 +32,6 @@ const Login = () => {
         <div className = 'login'>
             <div className='card'>
                 <div className = 'left'> 
-                    {/* <h1>Hello World!</h1> */}
-                    {/* <p> 
-                        Nice to meet you ! <br/>
-                         </p> */}
                     <span>Don't have an account?</span>
                     <Link to = "/register">
                     <button>Register</button>
