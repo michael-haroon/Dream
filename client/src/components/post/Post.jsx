@@ -25,18 +25,7 @@ const Post = ({ post }) => {
 });
 
   const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn:(liked) => {
-      if (liked) return makeRequest.delete("/likes?postId=" + post.id);
-      return makeRequest.post("/likes", { postId: post.id });
-    },
-    onSuccess: ()=>{
-      
-        // Invalidate and refetch
-        queryClient.invalidateQueries(["likes"]);
-    }
-});
+  
   const deleteMutation = useMutation({
     mutationFn: (postId) => {
       return makeRequest.delete("/posts/" + postId);
