@@ -41,11 +41,16 @@ const Comments = ({ postId }) => {
     <div className="comments">
       <div className="write">
         <img src={"/upload/" + currentUser.profilePic} alt="" />
-        <input
+        <textarea
           type="text"
           placeholder="write a comment"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
+          rows={1}
+          onInput={(e) => {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+          }}
         />
         <button onClick={handleClick}>Send</button>
       </div>

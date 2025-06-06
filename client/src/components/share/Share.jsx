@@ -1,50 +1,27 @@
 import "./share.scss";
-import Image from "../../assets/img.png";
-import Map from "../../assets/map.png";
-import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import dream from "../../assets/Dream.jpeg";
+
 const Share = () => {
-  const [file, setFile] = useState(null);
   const [desc, setDesc] = useState("");
-
-  const upload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await makeRequest.post("/upload", formData);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const { currentUser } = useContext(AuthContext);
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (newPost) => {
       return makeRequest.post("/posts", newPost);
     },
-    
-      onSuccess: () => {
-        // Invalidate and refetch
-        queryClient.invalidateQueries({queryKey:["posts"]});
-      },
-    
-});
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:["posts"]});
+    },
+  });
 
   const handleClick = async (e) => {
     e.preventDefault();
-    let imgUrl = "";
-    if (file) imgUrl = await upload();
-    mutation.mutate({ desc, img: imgUrl });
+    mutation.mutate({ desc });
     setDesc("");
-    setFile(null);
   };
 
   return (
@@ -52,18 +29,17 @@ const Share = () => {
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={dream} alt="" />
-            <input
-              type="text"
+            <img src={"/upload/" + currentUser.profilePic} alt="" />
+            <textarea
               placeholder={`What's on your mind ${currentUser.name}?`}
-              onChange={(e) => setDesc(e.target.value)}
               value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              rows={1}
+              onInput={(e) => {
+                e.target.style.height = 'auto';
+                e.target.style.height = e.target.scrollHeight + 'px';
+              }}
             />
-          </div>
-          <div className="right">
-            {file && (
-              <img className="file" alt="" src={URL.createObjectURL(file)} />
-            )}
           </div>
         </div>
         <hr />

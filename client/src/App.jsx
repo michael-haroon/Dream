@@ -7,7 +7,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import LeftBar from "./components/leftBar/LeftBar";
 import Home from "./pages/home/Home";
 import "./style.scss";
 import { useContext } from "react";
@@ -17,9 +16,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-
   const { darkMode } = useContext(DarkModeContext);
-
   const queryClient = new QueryClient();
 
   const Layout = () => {
@@ -41,7 +38,6 @@ function App() {
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
-
     return children;
   };
 

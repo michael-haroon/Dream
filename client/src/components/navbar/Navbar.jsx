@@ -2,26 +2,28 @@ import "./navBar.scss"
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 import dream from "../../assets/Dream.jpeg";
 
 const NavBar = () => {
-
     const { toggle, darkMode } = useContext(DarkModeContext);
-    const { currentUser } = useContext(AuthContext);
-    const handleClick = async (e) => {
-        console.log(e);
-        e.preventDefault();
+    const { currentUser, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const handleSignOut = async () => {
         try {
-          navigate("/profile:u")//finish by pulling user data and profile from somewhere
+            await logout();
+            navigate("/login");
         } catch (err) {
-          setErr(err.response.data);
+            console.error(err);
         }
-      };
+    };
+
     return (
         <div className = 'navbar'>
             <div className = 'left'>
@@ -34,12 +36,20 @@ const NavBar = () => {
                     <DarkModeOutlinedIcon onClick={toggle}/>)}
             </div>
             <div className = 'right'>
-                <div className="user" onClick={handleClick}>  
+                <div className="user" onClick={() => setShowDropdown(!showDropdown)}>  
                     <img src= {dream}
                     alt= ""
                     />
                     <span>{currentUser.name}</span>
                 </div>
+                {showDropdown && (
+                    <div className="dropdown">
+                        <div className="dropdown-item" onClick={handleSignOut}>
+                            <LogoutIcon />
+                            <span>Sign Out</span>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     )

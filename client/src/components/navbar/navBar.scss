@@ -48,12 +48,14 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      position: relative;
 
       .user {
         display: flex;
         align-items: center;
         gap: 10px;
         font-weight: 500;
+        cursor: pointer;
 
         img {
           width: 30px;
@@ -61,7 +63,39 @@
           border-radius: 50%;
           object-fit: cover;
         }
-        span{
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: themed("bg");
+        border: 1px solid themed("border");
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+        min-width: 150px;
+        z-index: 1000;
+
+        .dropdown-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 16px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: themed("bgSoft");
+          }
+
+          svg {
+            font-size: 20px;
+          }
+
+          span {
+            font-size: 14px;
+          }
         }
       }
     }
