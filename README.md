@@ -4,7 +4,7 @@ A full-stack social media platform built with modern web technologies.
 
 ## 🏗️ Project Structure
 
-### Backend (Node.js/Express)
+### Server (Node.js/Express)
 - **Framework**: Express.js
 - **Database**: MySQL
 - **Authentication**: JWT with cookies
@@ -28,7 +28,7 @@ A full-stack social media platform built with modern web technologies.
 ## ⚠️ Issues and Improvements
 
 ### Duplicate Dependencies
-- [ ] Remove `react-query` from backend (only needed in frontend)
+- [ ] Remove `react-query` from server (only needed in frontend)
 - [ ] Standardize on `date-fns` or native Date instead of `moment`
 
 ### Security Concerns
@@ -60,14 +60,14 @@ A full-stack social media platform built with modern web technologies.
 
 2. Set up environment variables
    ```bash
-   cp backend/.env.example backend/.env
+   cp server/.env.example server/.env
    # Update the .env file with your database credentials
    ```
 
 3. Install dependencies
    ```bash
-   # Install backend dependencies
-   cd backend
+   # Install server dependencies
+   cd server
    npm install
    
    # Install frontend dependencies
@@ -77,7 +77,7 @@ A full-stack social media platform built with modern web technologies.
 
 4. Start the development servers
    ```bash
-   # In backend directory
+   # In server directory
    npm run dev
    
    # In client directory (new terminal)
