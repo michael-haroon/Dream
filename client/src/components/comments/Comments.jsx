@@ -42,7 +42,7 @@ const Comments = ({ postId }) => {
       <div className="write">
         <textarea
           type="text"
-          placeholder="write a comment"
+          placeholder="add your thoughts"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
           rows={1}
@@ -58,7 +58,7 @@ const Comments = ({ postId }) => {
         : isLoading
         ? "loading"
         : data.map((comment) => (
-            <div className="comment">
+            <div className="comment" key={comment.id}>
               <div className="info">
                 <span>{comment.name}</span>
                 <p>{comment.desc}</p>
