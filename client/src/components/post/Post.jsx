@@ -1,3 +1,5 @@
+// component for each post
+
 import "./post.scss";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -25,7 +27,7 @@ const Post = ({ post }) => {
 });
 
   const queryClient = useQueryClient();
-  
+
   const deleteMutation = useMutation({
     mutationFn: (postId) => {
       return makeRequest.delete("/posts/" + postId);
@@ -45,9 +47,7 @@ const Post = ({ post }) => {
       <div className="container">
         <div className="user">
           <div className="userInfo">
-            <img src={dream} alt="" />
             <div className="details">
-              <span className="name">{post.name}</span>
               <span className="date">{moment(post.createdAt).fromNow()}</span>
             </div>
           </div>
@@ -57,6 +57,7 @@ const Post = ({ post }) => {
           )}
         </div>
         <div className="content">
+          <h3 className="title">{post.title}</h3>
           <p>{post.desc}</p>
           <img src={"/upload/" + post.img} alt="" />
         </div>

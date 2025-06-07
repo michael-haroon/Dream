@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
 const Share = () => {
+  const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
@@ -20,7 +21,8 @@ const Share = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    mutation.mutate({ desc });
+    mutation.mutate({ title, desc });
+    setTitle("");
     setDesc("");
   };
 
@@ -29,7 +31,13 @@ const Share = () => {
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={"/upload/" + currentUser.profilePic} alt="" />
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              maxLength={45}
+            />
             <textarea
               placeholder={`What's on your mind ${currentUser.name}?`}
               value={desc}

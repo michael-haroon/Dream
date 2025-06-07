@@ -1,3 +1,5 @@
+// component for container of posts
+
 import Post from "../post/Post";
 import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";

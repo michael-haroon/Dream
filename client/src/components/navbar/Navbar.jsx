@@ -22,7 +22,7 @@ const NavBar = () => {
         } catch (err) {
             console.error(err);
         }
-    };
+      };
 
     return (
         <div className = 'navbar'>

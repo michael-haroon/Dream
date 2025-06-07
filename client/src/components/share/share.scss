@@ -14,20 +14,27 @@
       padding: 20px;
       .top {
         display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-
+        align-items: center;
+        gap: 20px;
         .left {
+          flex: 5;
           display: flex;
-          align-items: flex-start;
-          flex: 1;
+          flex-direction: column;
           gap: 10px;
-
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
+          
+          input {
+            border: none;
+            outline: none;
+            padding: 10px;
+            background-color: transparent;
+            color: themed("textColor");
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-bottom: 1px solid themed("border");
+            
+            &::placeholder {
+              color: themed("textColorSoft");
+            }
           }
 
           textarea {
@@ -35,15 +42,14 @@
             outline: none;
             padding: 10px;
             background-color: transparent;
-            width: 100%;
             color: themed("textColor");
+            font-size: 14px;
+            line-height: 1.5;
             resize: none;
             min-height: 40px;
             max-height: 200px;
             overflow-y: auto;
             font-family: inherit;
-            font-size: 14px;
-            line-height: 1.5;
 
             &::placeholder {
               color: themed("textColorSoft");

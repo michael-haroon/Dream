@@ -1,5 +1,5 @@
 # Dependencies
-node_modules/
+node_modules
 .pnp
 .pnp.js
 
@@ -42,7 +42,7 @@ Thumbs.db
 
 # Uploads directory (if you have file uploads)
 /uploads/
-/backend/uploads/
+/server/uploads/
 
 # Local development
 .env
