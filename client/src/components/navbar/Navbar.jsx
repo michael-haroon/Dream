@@ -1,5 +1,4 @@
 import "./navBar.scss"
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
