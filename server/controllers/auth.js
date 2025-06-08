@@ -3,31 +3,45 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const register = (req, res) => {
-  //CHECK USER IF EXISTS
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(req.body.email)) {
+    return res.status(400).json("Please enter a valid email address");
+  }
 
-  const q = "SELECT * FROM users WHERE username = ?";
+  // Validate password requirements
+  if (req.body.password.length < 8) {
+    return res.status(400).json("Password must be at least 8 characters long");
+  }
 
-  db.query(q, [req.body.username], (err, data) => {
+  // Check if email already exists
+  const checkEmailQuery = "SELECT * FROM users WHERE email = ?";
+  db.query(checkEmailQuery, [req.body.email], (err, emailData) => {
     if (err) return res.status(500).json(err);
-    if (data.length) return res.status(409).json("User already exists!");
-    //CREATE A NEW USER
-    //Hash the password
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+    if (emailData.length) return res.status(409).json("Email already exists!");
 
-    const q =
-      "INSERT INTO users (`username`,`email`,`password`,`name`) VALUE (?)";
-
-    const values = [
-      req.body.username,
-      req.body.email,
-      hashedPassword,
-      req.body.name,
-    ];
-
-    db.query(q, [values], (err, data) => {
+    // Check if username exists
+    const checkUsernameQuery = "SELECT * FROM users WHERE username = ?";
+    db.query(checkUsernameQuery, [req.body.username], (err, usernameData) => {
       if (err) return res.status(500).json(err);
-      return res.status(200).json("User has been created.");
+      if (usernameData.length) return res.status(409).json("Username already exists!");
+
+      // Hash the password
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+
+      const q = "INSERT INTO users (`username`,`email`,`password`,`name`) VALUE (?)";
+      const values = [
+        req.body.username,
+        req.body.email,
+        hashedPassword,
+        req.body.name,
+      ];
+
+      db.query(q, [values], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json("User has been created.");
+      });
     });
   });
 };
