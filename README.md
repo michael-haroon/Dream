@@ -8,15 +8,12 @@ A full-stack social media platform built with modern web technologies.
 - **Framework**: Express.js
 - **Database**: MySQL
 - **Authentication**: JWT with cookies
-- **File Upload**: Multer for handling file uploads
 
 #### API Routes
 - Auth (login/register)
 - Users
 - Posts
 - Comments
-- Likes
-- Relationships (followers/following)
 
 ### Frontend (React)
 - **Framework**: React with Vite
