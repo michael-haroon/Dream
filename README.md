@@ -1,4 +1,4 @@
-# 🌟 Social Media Application
+# 🌟 Journaling Application
 
 A full-stack journalling platform built with modern web technologies.
 
