@@ -1,6 +1,6 @@
 # 🌟 Social Media Application
 
-A full-stack social media platform built with modern web technologies.
+A full-stack journalling platform built with modern web technologies.
 
 ## 🏗️ Project Structure
 
